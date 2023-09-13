@@ -1,25 +1,48 @@
 
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
-import { criarNovoUsuario } from './funcoes.js';
-import { Pergunta, Categoria, Usuario, Adm } from './entidades.js';
+
+import { criarNovoUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria } from './funcoes.js';
+
 
 
 function telaInicial() {
     let nomeUsuario = "";
-    let cadastrouCliente = false;
+    let usuarioCriado = false;
 
-    do {
-        nomeUsuario = prompt("Insira seu nome:  (Pressione 0 para sair)")
+    nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n (Pressione 0 para sair)")
 
-        if (nomeUsuario != 0) {
-            cadastrouCliente = criarNovoUsuario(nomeUsuario);
+    if (nomeUsuario == "0" || nomeUsuario == null) {
+        alert("Volte Sempre!")
+    } else {
+        usuarioCriado = criarNovoUsuario(nomeUsuario);
+
+        if (usuarioCriado) {
+            telaListaCategorias();
+        } else {
+            telaInicial();
         }
+    }
 
-    } while ((nomeUsuario != "0" && !cadastrouCliente && nomeUsuario != null))
+
+}
+
+
+function telaListaCategorias() {
+    let categorias = listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
+    let categoriaEscolhida = parseInt(prompt(categorias)); //Recebendo o valor da tela
+
+    if (validarCategoriaEscolhida(categoriaEscolhida)) {
+        listarPerguntasCategoria(categoriaEscolhida - 1) //Envia como parâmetro a posicao da categoria escolhida pelo usuario
+    } else {
+        alert("Categoria Inválida")
+        telaListaCategorias();
+    }
+
 }
 
 telaInicial();
+
 
 
 
