@@ -12,15 +12,19 @@ function telaInicial() {
 
     nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n (Pressione 0 para sair)")
 
-    if (nomeUsuario != "0" && nomeUsuario != null) {
+    if (nomeUsuario == "0" || nomeUsuario == null) {
+        alert("Volte Sempre!")
+    } else {
         usuarioCriado = criarNovoUsuario(nomeUsuario);
+
+        if (usuarioCriado) {
+            telaListaCategorias();
+        } else {
+            telaInicial();
+        }
     }
 
-    if (usuarioCriado) {
-        telaListaCategorias();
-    } else {
-        telaInicial();
-    }
+
 }
 
 
