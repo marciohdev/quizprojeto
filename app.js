@@ -2,29 +2,39 @@
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
 
-import { criarNovoUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria } from './funcoes.js';
+import { triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria } from './funcoes.js';
 
 
 
 function telaInicial() {
     let nomeUsuario = "";
-    let usuarioCriado = false;
+    let senhaUsuario = "";
+    let usuarioOk = false;
 
     nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n (Pressione 0 para sair)")
 
     if (nomeUsuario == "0" || nomeUsuario == null) {
         alert("Volte Sempre!")
     } else {
-        usuarioCriado = criarNovoUsuario(nomeUsuario);
 
-        if (usuarioCriado) {
-            telaListaCategorias();
+        senhaUsuario = prompt("Insira a sua senha: \n (Pressione 0 para sair)")
+
+        if (senhaUsuario == "0" || senhaUsuario == null) {
+            alert("Volte Sempre!")
         } else {
-            telaInicial();
+
+            usuarioOk = triagemUsuario(nomeUsuario, senhaUsuario);
+            console.log(usuarioOk)
+            //criarNovoUsuario(nomeUsuario);
+
+            if (usuarioOk) {
+                telaListaCategorias();
+            } else {
+                telaInicial();
+            }
         }
+
     }
-
-
 }
 
 

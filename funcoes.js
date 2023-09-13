@@ -2,19 +2,46 @@ import { Pergunta, Categoria, Usuario, Adm } from './entidades.js'
 import { bancoCategorias, bancoUsuarios, bancoPerguntas } from './banco_de_dados.js';
 
 //FUNÇÕES QUE PRECISAM SER EXPORTADAS
-function criarNovoUsuario(nome) {//cria um novo usuário
+function criarNovoUsuario(nomeUsuario, senhaUsuario) {//cria um novo usuário
 
-    let usuarioJaExiste = verificarUsuarioExistente(nome); //Chama a função verificar nomeExistente
-    let usuarioEmBranco = verificarUsuarioEmBranco(nome);
+    let usuario1 = new Usuario(nomeUsuario, senhaUsuario);
+    bancoUsuarios.push(usuario1)
+    return true;
+}
 
-    if (usuarioJaExiste || usuarioEmBranco) {
-        alert("Usuário já existe ou Inválido. Tente novamente")
+function triagemUsuario(nomeUsuario, senhaUsuario) {
+    console.log("Entra na triagem do usuário")
+
+    let usuarioJaExiste = verificarUsuarioExistente(nomeUsuario); //Chama a função verificar nomeExistente
+    let usuarioEmBranco = verificarUsuarioEmBranco(nomeUsuario, senhaUsuario);
+
+    if (usuarioEmBranco) {
+        alert("Algum campo em branco. Tente novamente!")
         return false;
+    }
+
+    if (usuarioJaExiste) {
+        let ok = efetuarLogin(nomeUsuario, senhaUsuario)
+        console.log(ok)
+        return ok;
     } else {
-        let usuario1 = new Usuario(nome);
-        bancoUsuarios.push(usuario1)
+        console.log("Vai criar novo usuário!")
+        criarNovoUsuario(nomeUsuario, senhaUsuario);
         return true;
     }
+}
+
+function efetuarLogin(nomeUsuario, senhaUsuario) { //função usada por triagem Usuario
+
+    for (let i = 0; i < bancoUsuarios.length; i++) {
+
+        if ((nomeUsuario == bancoUsuarios[i].nome) && (senhaUsuario == bancoUsuarios[i].senha)) {
+            console.log("Passando no true")
+            return true;
+        }
+    }
+    alert("Informações de login incorretas")
+    return false;
 }
 
 function listarCategoriasPrompt() {//retorna uma string que vai ser usada no prompt da telaListarCategorias.
@@ -65,16 +92,16 @@ function verificarUsuarioExistente(nome) {//Verifica a existência de usuário c
     return false; //Caso não ache nome igual, retorna false
 }
 
-function verificarUsuarioEmBranco(nome) {//verifica se o nome recebido tem alguma coisa
+function verificarUsuarioEmBranco(nome, senha) {//verifica se o nome recebido tem alguma coisa
 
-    if (nome == 0) {
+    if (nome == 0 || senha == 0) {
         return true;
     } else {
         return false;
     }
 }
 
-export { criarNovoUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria }
+export { triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria }
 
 /*
 module.exports = {

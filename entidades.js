@@ -17,8 +17,9 @@ class Categoria {
 }
 
 class Usuario {
-    constructor(nome) {
+    constructor(nome, senha) {
         this.nome = nome;
+        this.senha = senha;
         this.pontuacao = 0;
     }
 
