@@ -5,6 +5,7 @@ const textoFinal = document.querySelector(".chegada span")
 const conteudo = document.querySelector(".conteudo")
 const conteudoFinal = document.querySelector(".chegada")
 const btnRestart = document.querySelector(".chegada button")
+const btnStart = document.querySelector(".inicioQuiz")
 
 import perguntas from "./perguntas.js"
 
@@ -32,7 +33,13 @@ function passarParaProximaPergunta(r) {
     }
 }
 
-
+function iniciarQuiz() {
+    btnStart.onclick = () => {
+        btnStart.style.display = "none"
+        carregarPergunta()
+    }
+    
+}
 
 function carregarPergunta() {
     spnQtd.innerHTML = `${index + 1}/${perguntas.length}`
@@ -62,4 +69,4 @@ function encerrar() {
     conteudoFinal.style.display = "flex";
 }
 
-carregarPergunta()
+iniciarQuiz()
