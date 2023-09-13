@@ -70,3 +70,7 @@ button {
 .chegada button {
     text-align: center;
 }
+
+.novaPergunta {
+    display: none;
+}

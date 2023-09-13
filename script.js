@@ -6,6 +6,8 @@ const conteudo = document.querySelector(".conteudo")
 const conteudoFinal = document.querySelector(".chegada")
 const btnRestart = document.querySelector(".chegada button")
 const btnStart = document.querySelector(".inicioQuiz")
+const btnAddPergunta = document.querySelector(".addPergunta")
+const inputPergunta = document.querySelector(".novaPergunta")
 
 import perguntas from "./perguntas.js"
 
@@ -36,8 +38,21 @@ function passarParaProximaPergunta(r) {
 function iniciarQuiz() {
     btnStart.onclick = () => {
         btnStart.style.display = "none"
+        btnAddPergunta.style.display = "none"
         carregarPergunta()
     }
+
+    addPergunta()
+    
+}
+
+function addPergunta() {
+    btnAddPergunta.onclick = () => {
+        btnStart.style.display = "none"
+        btnAddPergunta.style.display = "none"
+        inputPergunta.style.display = "flex"
+    }
+
     
 }
 
