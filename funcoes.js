@@ -1,5 +1,5 @@
 import { Pergunta, Categoria, Usuario, Adm } from './entidades.js'
-import { bancoCategorias, bancoUsuarios } from './banco_de_dados.js';
+import { bancoCategorias, bancoUsuarios, bancoPerguntas } from './banco_de_dados.js';
 
 //FUNÇÕES QUE PRECISAM SER EXPORTADAS
 function criarNovoUsuario(nome) {//cria um novo usuário
@@ -44,7 +44,13 @@ function validarCategoriaEscolhida(categoriaEscolhida) {//Verifica se a categori
 }
 
 function listarPerguntasCategoria(indiceCategoria) {
+
     console.log("Entrou na listar perguntas") //pode apagar quando começar a mexer
+
+    /*
+    Aqui tu usa um filter ou sei lá pra pegar as perguntas que tem 
+    categoria.nome == bancoCategorias[indiceCategoria].nome (Ou algo assim)
+    */
 }
 
 //FUNÇÕES CHAMADAS POR OUTRAS FUNÇÕES (NÃO PRECISAM SER EXPORTADAS)

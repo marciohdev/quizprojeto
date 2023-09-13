@@ -13,7 +13,6 @@ class Pergunta {
 class Categoria {
     constructor(nome) {
         this.nome = nome;
-        this.perguntas = [];
     }
 }
 
