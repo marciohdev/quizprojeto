@@ -7,16 +7,16 @@ import { Pergunta, Categoria, Usuario, Adm } from './entidades.js';
 
 function telaInicial() {
     let nomeUsuario = "";
+    let cadastrouCliente = false;
 
     do {
-        nomeUsuario = prompt("Insira seu nome:  (Pressione 0 para sair)", "")
+        nomeUsuario = prompt("Insira seu nome:  (Pressione 0 para sair)")
 
         if (nomeUsuario != 0) {
-            console.log("Entrou no if")
-            criarNovoUsuario(nomeUsuario);
+            cadastrouCliente = criarNovoUsuario(nomeUsuario);
         }
 
-    } while (nomeUsuario != "0")
+    } while ((nomeUsuario != "0" && !cadastrouCliente && nomeUsuario != null))
 }
 
 telaInicial();
