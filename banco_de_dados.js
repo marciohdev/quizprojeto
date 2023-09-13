@@ -10,12 +10,8 @@ let pergunta1 = new Pergunta(programacao, "Qual o nome x? ")
 
 //"BANCO DE DADOS" do sistema
 let bancoUsuarios = [];
-let bancoPerguntas = [];
+let bancoPerguntas = [pergunta1];
 let bancoCategorias = [programacao, javascript, padroesProjetos];
-
-//ADICIONAR UMA PERGUNTA NO SISTEMA
-bancoPerguntas.push(pergunta1);
-
 
 
 export { bancoUsuarios, bancoCategorias, bancoPerguntas } 
