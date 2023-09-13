@@ -1,7 +1,7 @@
 
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
-import { criarNovoUsuario } from './funcoes.js';
+import { criarNovoUsuario, listarCategorias, validarCategoriaEscolhida } from './funcoes.js';
 import { Pergunta, Categoria, Usuario, Adm } from './entidades.js';
 
 
@@ -19,7 +19,19 @@ function telaInicial() {
     } while ((nomeUsuario != "0" && !cadastrouCliente && nomeUsuario != null))
 }
 
+function telaListarCategorias() {
+    let categorias = listarCategorias(); //Montando o texto do prompt
+    let categoriaEscolhida = parseInt(prompt(categorias)); //Recebendo o valor da tela
+
+    if (!validarCategoriaEscolhida(categoriaEscolhida)) {
+        alert("Categoria Inválida")
+        telaListarCategorias();
+    }
+
+}
+
 telaInicial();
+telaListarCategorias();
 
 
 
