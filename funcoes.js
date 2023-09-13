@@ -4,28 +4,24 @@ import { bancoCategorias, bancoUsuarios, bancoPerguntas } from './banco_de_dados
 //FUNÇÕES QUE PRECISAM SER EXPORTADAS
 function criarNovoUsuario(nomeUsuario, senhaUsuario) {//cria um novo usuário
 
-    let usuario1 = new Usuario(nomeUsuario, senhaUsuario);
-    bancoUsuarios.push(usuario1)
+    bancoUsuarios.push(new Usuario(nomeUsuario, senhaUsuario))
     return true;
 }
 
 function triagemUsuario(nomeUsuario, senhaUsuario) {
-    console.log("Entra na triagem do usuário")
 
     let usuarioJaExiste = verificarUsuarioExistente(nomeUsuario); //Chama a função verificar nomeExistente
-    let usuarioEmBranco = verificarUsuarioEmBranco(nomeUsuario, senhaUsuario);
+    // let usuarioEmBranco = verificarUsuarioEmBranco(nomeUsuario, senhaUsuario);
 
-    if (usuarioEmBranco) {
-        alert("Algum campo em branco. Tente novamente!")
-        return false;
-    }
+    // if (usuarioEmBranco) {
+
+    //     return false;
+    // }
 
     if (usuarioJaExiste) {
-        let ok = efetuarLogin(nomeUsuario, senhaUsuario)
-        console.log(ok)
-        return ok;
+        let usuarioLogado = efetuarLogin(nomeUsuario, senhaUsuario)
+        return usuarioLogado;
     } else {
-        console.log("Vai criar novo usuário!")
         criarNovoUsuario(nomeUsuario, senhaUsuario);
         return true;
     }
@@ -92,16 +88,17 @@ function verificarUsuarioExistente(nome) {//Verifica a existência de usuário c
     return false; //Caso não ache nome igual, retorna false
 }
 
-function verificarUsuarioEmBranco(nome, senha) {//verifica se o nome recebido tem alguma coisa
+function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alguma coisa
 
-    if (nome == 0 || senha == 0) {
+    if (atributo == 0) {
+        alert("Campo em branco. Tente novamente!")
         return true;
     } else {
         return false;
     }
 }
 
-export { triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria }
+export { verificarCampoEmBranco, triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria }
 
 /*
 module.exports = {

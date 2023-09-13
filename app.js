@@ -2,38 +2,45 @@
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
 
-import { triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria } from './funcoes.js';
+import { verificarCampoEmBranco, triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria } from './funcoes.js';
 
 
 
 function telaInicial() {
     let nomeUsuario = "";
     let senhaUsuario = "";
-    let usuarioOk = false;
+    let usuarioCheck = false;
 
     nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n (Pressione 0 para sair)")
 
     if (nomeUsuario == "0" || nomeUsuario == null) {
         alert("Volte Sempre!")
     } else {
+        if (!verificarCampoEmBranco(nomeUsuario)) {
 
-        senhaUsuario = prompt("Insira a sua senha: \n (Pressione 0 para sair)")
+            senhaUsuario = prompt("Insira a sua senha: \n (Pressione 0 para sair)")
 
-        if (senhaUsuario == "0" || senhaUsuario == null) {
-            alert("Volte Sempre!")
-        } else {
-
-            usuarioOk = triagemUsuario(nomeUsuario, senhaUsuario);
-            console.log(usuarioOk)
-            //criarNovoUsuario(nomeUsuario);
-
-            if (usuarioOk) {
-                telaListaCategorias();
+            if (senhaUsuario == "0" || senhaUsuario == null) {
+                alert("Volte Sempre!")
             } else {
-                telaInicial();
-            }
-        }
+                if (!verificarCampoEmBranco(senhaUsuario)) {
+                    usuarioCheck = triagemUsuario(nomeUsuario, senhaUsuario);
+                    //criarNovoUsuario(nomeUsuario);
 
+                    if (usuarioCheck) {
+                        telaListaCategorias();
+                    } else {
+                        telaInicial();
+                    }
+                } else {
+                    telaInicial();
+                }
+
+            }
+        } else {
+            telaInicial();
+
+        }
     }
 }
 
