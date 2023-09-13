@@ -4,25 +4,20 @@ import { bancoCategorias, bancoUsuarios } from './banco_de_dados.js';
 //FUNÇÕES QUE PRECISAM SER EXPORTADAS
 function criarNovoUsuario(nome) {//cria um novo usuário
 
-    console.log("Nome recebido: " + nome)
+    let usuarioJaExiste = verificarUsuarioExistente(nome); //Chama a função verificar nomeExistente
+    let usuarioEmBranco = verificarUsuarioEmBranco(nome);
 
-    if (nome == null) {
+    if (usuarioJaExiste || usuarioEmBranco) {
+        alert("Usuário já existe ou Inválido. Tente novamente")
         return false;
-    }
-
-    let usuarioJaExiste = verificarUsuarioExistente(nome);
-
-    if (usuarioJaExiste) {
-        alert("Usuário Já existe, tente novamente")
     } else {
-        console.log("criou novo usuário")
         let usuario1 = new Usuario(nome);
         bancoUsuarios.push(usuario1)
         return true;
     }
 }
 
-function listarCategorias() {//lista as categorias existentes por nome
+function listarCategoriasPrompt() {//retorna uma string que vai ser usada no prompt da telaListarCategorias.
 
     const arrayCategorias = bancoCategorias.map((categoria) => {
         return categoria.nome
@@ -48,6 +43,10 @@ function validarCategoriaEscolhida(categoriaEscolhida) {//Verifica se a categori
     }
 }
 
+function listarPerguntasCategoria(indiceCategoria) {
+    console.log("Entrou na listar perguntas") //pode apagar quando começar a mexer
+}
+
 //FUNÇÕES CHAMADAS POR OUTRAS FUNÇÕES (NÃO PRECISAM SER EXPORTADAS)
 function verificarUsuarioExistente(nome) {//Verifica a existência de usuário com mesmo nome
 
@@ -60,7 +59,16 @@ function verificarUsuarioExistente(nome) {//Verifica a existência de usuário c
     return false; //Caso não ache nome igual, retorna false
 }
 
-export { criarNovoUsuario, listarCategorias, validarCategoriaEscolhida }
+function verificarUsuarioEmBranco(nome) {//verifica se o nome recebido tem alguma coisa
+
+    if (nome == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export { criarNovoUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria }
 
 /*
 module.exports = {
