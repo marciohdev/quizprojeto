@@ -17,7 +17,7 @@ body {
     background: linear-gradient(90deg, rgba(91, 30, 159, 1) 0%, rgba(77,39,182,1) 100%);
 }
 
-body h2 {
+body h1 {
     color: white;
 }
 
@@ -25,7 +25,7 @@ main {
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    width: 100px;
+    width: 100%;
     max-width: 300px;
     min-height: 200px;
     display: flex;
@@ -33,10 +33,10 @@ main {
     justify-content: center;
 }
 
-.content {
+.conteudo {
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 100%;
     gap: 10px;
 }
 
@@ -44,7 +44,7 @@ main {
     text-align: end;
 }
 
-.answers {
+.respostas {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -58,8 +58,15 @@ button {
     border-radius: 5px;
     cursor: pointer;
     background-color: rgba(75, 140, 225, 0.963);
+    color: white;
 } 
 
-.finish button {
+.chegada {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chegada button {
     text-align: center;
 }
