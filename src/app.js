@@ -45,7 +45,7 @@ function telaInicial() {
     }
 }
 
-//Check
+//Check ->Sendo chamada pela tela inicial
 function telaListaCategorias() {
     let categorias = rotas.listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
     let categoriaEscolhida = parseInt(prompt(categorias)); //Recebendo o valor da tela
@@ -59,7 +59,7 @@ function telaListaCategorias() {
 
 }
 
-//Check
+//Check ->Sendo chamada pela tela de listagem de categorias
 function telaListaPerguntas(categoriaEscolhida) {
 
     rotas.listarPerguntasCategoria(categoriaEscolhida - 1)
@@ -74,7 +74,7 @@ function telaListaPerguntas(categoriaEscolhida) {
 //Check
 function telaPontuacaoGeral() {
     let textoPrompt = listarPontuacaoGeral();
-    console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
+    //console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
 }
 
 

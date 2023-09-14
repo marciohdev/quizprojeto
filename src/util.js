@@ -1,6 +1,8 @@
 
 import { bancoUsuarios } from './banco_de_dados.js';
 
+//FUNÇÕES DE VALIDACAO DE CAMPOS OU LISTAGENS QUE NÃO ESTÃO NECESSARIAMENTE LIGADAS A UMA CLASSE
+
 //<-- TELA DE PONTUAÇÃO -->
 function listarPontuacaoGeral() {
 
