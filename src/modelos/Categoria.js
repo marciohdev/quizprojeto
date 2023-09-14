@@ -1,7 +1,7 @@
 class Categoria {
     constructor(nome) {
         this.nome = nome;
-        this.pontosCategoria[{
+        this.pontosCategoria = [{
             nome: "",
             pontuacao: 0
         }]
