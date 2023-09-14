@@ -50,7 +50,7 @@ function telaListaCategorias() {
     let categoriaEscolhida = parseInt(prompt(categorias)); //Recebendo o valor da tela
 
     if (validarCategoriaEscolhida(categoriaEscolhida)) {
-        listarPerguntasCategoria(categoriaEscolhida - 1) //Envia como parâmetro a posicao da categoria escolhida pelo usuario
+        telaListaPerguntas(categoriaEscolhida) //Envia como parâmetro a posicao da categoria escolhida pelo usuario
     } else {
         alert("Categoria Inválida")
         telaListaCategorias();
@@ -58,6 +58,14 @@ function telaListaCategorias() {
 
 }
 
+function telaListaPerguntas(categoriaEscolhida) {
+
+    listarPerguntasCategoria(categoriaEscolhida - 1)
+}
+
+function telaPontuacaoGeral() {
+
+}
 telaInicial();
 
 

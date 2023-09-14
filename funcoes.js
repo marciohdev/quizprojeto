@@ -76,6 +76,20 @@ function listarPerguntasCategoria(indiceCategoria) {
     */
 }
 
+function listarPontuacaoGeral() {
+    const arrayNomePontuacao = bancoUsuarios.map((usuario) => {
+        return usuario
+    })
+
+    let texto = ''
+
+    for (let i = 0; i < arrayCategorias.length; i++) {
+        texto += `${i + 1} - ${arrayCategorias[i]} \n `
+    }
+
+    return `Escolha uma categoria: \n ${texto}`
+}
+
 //FUNÇÕES CHAMADAS POR OUTRAS FUNÇÕES (NÃO PRECISAM SER EXPORTADAS)
 function verificarUsuarioExistente(nome) {//Verifica a existência de usuário com mesmo nome
 
