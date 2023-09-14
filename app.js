@@ -2,10 +2,11 @@
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
 
-import { verificarCampoEmBranco, triagemUsuario, listarCategoriasPrompt, validarCategoriaEscolhida, listarPerguntasCategoria } from './funcoes.js';
+import rotas from './rotas.js'
+import { listarPontuacaoGeral, verificarCampoEmBranco } from './util.js';
 
 
-
+//Check
 function telaInicial() {
     let nomeUsuario = "";
     let senhaUsuario = "";
@@ -24,7 +25,7 @@ function telaInicial() {
                 alert("Volte Sempre!")
             } else {
                 if (!verificarCampoEmBranco(senhaUsuario)) {
-                    usuarioCheck = triagemUsuario(nomeUsuario, senhaUsuario);
+                    usuarioCheck = rotas.triagemUsuario(nomeUsuario, senhaUsuario);
                     //criarNovoUsuario(nomeUsuario);
 
                     if (usuarioCheck) {
@@ -44,12 +45,12 @@ function telaInicial() {
     }
 }
 
-
+//Check
 function telaListaCategorias() {
-    let categorias = listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
+    let categorias = rotas.listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
     let categoriaEscolhida = parseInt(prompt(categorias)); //Recebendo o valor da tela
 
-    if (validarCategoriaEscolhida(categoriaEscolhida)) {
+    if (rotas.validarCategoriaEscolhida(categoriaEscolhida)) {
         telaListaPerguntas(categoriaEscolhida) //Envia como parâmetro a posicao da categoria escolhida pelo usuario
     } else {
         alert("Categoria Inválida")
@@ -58,14 +59,28 @@ function telaListaCategorias() {
 
 }
 
+//Check
 function telaListaPerguntas(categoriaEscolhida) {
 
-    listarPerguntasCategoria(categoriaEscolhida - 1)
+    rotas.listarPerguntasCategoria(categoriaEscolhida - 1)
+    telaPontuacaoGeral();
 }
 
+//Pendente
+// function telaPontuacaoCategoria() {
+//     rotas.listarPontuacaoCategoria();
+// }
+
+//Check
 function telaPontuacaoGeral() {
-
+    let textoPrompt = listarPontuacaoGeral();
+    console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
 }
+
+
+//telaPontuacaoGeral();
+
+
 telaInicial();
 
 
