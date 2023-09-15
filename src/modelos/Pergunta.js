@@ -6,7 +6,7 @@ class Pergunta {
         this.opcao2 = ""
         this.opcao3 = ""
         this.opcao4 = ""
-        this.opcaoCorreta
+        this.opcaoCorreta = ""
     }
 }
 

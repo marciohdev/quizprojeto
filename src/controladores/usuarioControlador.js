@@ -6,18 +6,13 @@ import { bancoUsuarios } from '../banco_de_dados.js'
 function criarNovoUsuario(nomeUsuario, senhaUsuario) {//cria um novo usuário
 
     bancoUsuarios.push(new Usuario(nomeUsuario, senhaUsuario))
+    alert("Usuário criado com sucesso!")
     return true;
 }
 
 function triagemUsuario(nomeUsuario, senhaUsuario) {
 
     let usuarioJaExiste = verificarUsuarioExistente(nomeUsuario); //Chama a função verificar nomeExistente
-    // let usuarioEmBranco = verificarUsuarioEmBranco(nomeUsuario, senhaUsuario);
-
-    // if (usuarioEmBranco) {
-
-    //     return false;
-    // }
 
     if (usuarioJaExiste) {
         let usuarioLogado = efetuarLogin(nomeUsuario, senhaUsuario)
