@@ -5,6 +5,7 @@ import { bancoUsuarios } from './banco_de_dados.js';
 
 //<-- TELA DE PONTUAÇÃO -->
 function listarPontuacaoGeral() {
+
     let texto = ''
 
     //ordenando o banco de dados Usuários através de um sort
@@ -20,14 +21,14 @@ function listarPontuacaoGeral() {
 }
 
 //Feito, não testado
-function contabilizarPontuacao(pontuacao, usuario, categoria){
+function contabilizarPontuacao(pontuacao, usuarioAtual, categoria){
 
     for(let i = 0; i < categoria.pontosCategoria.length(); i++){
 
-        if(categoria.pontosCategoria[i].nome == usuario.nome){
+        if(categoria.pontosCategoria[i].nome == usuarioAtual.nome){
 
             categoria.pontosCategoria[i].pontuacao = pontuacao;
-            usuario.pontuacao = pontuacao;
+            usuarioAtual.pontuacao = pontuacao;
         } 
     }
     
@@ -59,4 +60,4 @@ function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alg
     }
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria, contabilizarPontuacao, listarPontuacaoCategoria }
+export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria, contabilizarPontuacao}

@@ -71,13 +71,14 @@ function telaListaPerguntas(categoriaEscolhida) {
 }
 
 function telaListaPontuacaoCategoria(){
+
     let textoPrompt = listarPontuacaoCategoria();
 }
 
 //Check
 function telaPontuacaoGeral() {
     let textoPrompt = listarPontuacaoGeral();
-    //console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
+    console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
 }
 
 

@@ -16,7 +16,6 @@ usuario1.pontuacao = 20;
 //CRIAÇÃO DAS CATEGORIAS PADRÃO DO SISTEMA
 let programacao = new Categoria("programacao")
 let javascript = new Categoria("Javascript")
-let padroesProjetos = new Categoria("Padrões de Projeto")
 //-> Exportadas para banco_de_dados no final
 
 //CRIAÇÃO DAS PERGUNTAS - Já cria e relaciona ela com a categoria desejada
@@ -36,7 +35,7 @@ let padroesProjetos = new Categoria("Padrões de Projeto")
 
 let bancoUsuarios = [usuario1, usuario2, usuario3];
 let bancoPerguntas = [/*pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, perguntas9, pergunta10*/];
-let bancoCategorias = [programacao, javascript, padroesProjetos];
+let bancoCategorias = [programacao, javascript];
 
 
 
