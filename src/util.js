@@ -5,8 +5,6 @@ import { bancoUsuarios } from './banco_de_dados.js';
 
 //<-- TELA DE PONTUAÇÃO -->
 function listarPontuacaoGeral() {
-
-
     let texto = ''
 
     //ordenando o banco de dados Usuários através de um sort
@@ -18,10 +16,37 @@ function listarPontuacaoGeral() {
         texto += `${i + 1}º - ${bancoUsuarios[i].nome} - ${bancoUsuarios[i].pontuacao} PTS \n `
     }
 
-    return `Escolha uma categoria: \n ${texto}`
+    return `${texto}`
 }
 
-function listarPontuacaoCategoria() {
+//Feito, não testado
+function contabilizarPontuacao(pontuacao, usuario, categoria){
+
+    for(let i = 0; i < categoria.pontosCategoria.length(); i++){
+
+        if(categoria.pontosCategoria[i].nome == usuario.nome){
+
+            categoria.pontosCategoria[i].pontuacao = pontuacao;
+            usuario.pontuacao = pontuacao;
+        } 
+    }
+    
+}
+//Feito, não testado
+function listarPontuacaoCategoria(categoria, usuarioAtual) {
+    let texto = ''
+
+    //ordenando o array pontosCategoria através de um sort
+    categoria.pontosCategoria.sort((a, b) => b.pontuacao - a.pontuacao)
+
+    for (let i = 0; i < categoria.pontosCategoria.length; i++) {
+        if(categoria.pontosCategoria[i].nome == usuarioAtual.nome){
+            texto += `${i + 1}º - ${categoria.pontosCategoria[i].nome} - 
+            ${categoria.pontosCategoria[i].pontuacao} PTS \n `
+        }
+       
+    }
+    return `${texto}`
 }
 
 function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alguma coisa
@@ -34,4 +59,4 @@ function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alg
     }
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria }
+export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria, contabilizarPontuacao, listarPontuacaoCategoria }

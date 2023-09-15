@@ -3,7 +3,7 @@
 //const { validarSairPrograma } = require("./funcoes");
 
 import rotas from './rotas.js'
-import { listarPontuacaoGeral, verificarCampoEmBranco } from './util.js';
+import { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria } from './util.js';
 
 
 //Check
@@ -63,13 +63,16 @@ function telaListaCategorias() {
 function telaListaPerguntas(categoriaEscolhida) {
 
     rotas.listarPerguntasCategoria(categoriaEscolhida - 1)
+    /*Pra contabilizar a pontuacao, chamem a funcao contabilizarPontuacao(dentro de útil),
+    ela recebe como parametro a pontuacao advinda das perguntas respondidas, 
+    o usuarioAtual e a CategoriaAtual    */
+    
     telaPontuacaoGeral();
 }
 
-//Pendente
-// function telaPontuacaoCategoria() {
-//     rotas.listarPontuacaoCategoria();
-// }
+function telaListaPontuacaoCategoria(){
+    let textoPrompt = listarPontuacaoCategoria();
+}
 
 //Check
 function telaPontuacaoGeral() {
