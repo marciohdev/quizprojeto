@@ -1,11 +1,7 @@
 
 import { bancoUsuarios } from './banco_de_dados.js';
 
-//FUNÇÕES DE VALIDACAO DE CAMPOS OU LISTAGENS QUE NÃO ESTÃO NECESSARIAMENTE LIGADAS A UMA CLASSE
-
-//<-- TELA DE PONTUAÇÃO -->
 function listarPontuacaoGeral() {
-
     let texto = ''
 
     //ordenando o banco de dados Usuários através de um sort
@@ -21,17 +17,17 @@ function listarPontuacaoGeral() {
 }
 
 //Feito, não testado
-function contabilizarPontuacao(pontuacao, usuarioAtual, categoria){
+function somarPontuacao(pontuacao, usuarioAtual, categoriaAtual) {
 
-    for(let i = 0; i < categoria.pontosCategoria.length(); i++){
+    for (let i = 0; i < categoriaAtual.pontosCategoria.length(); i++) {
 
-        if(categoria.pontosCategoria[i].nome == usuarioAtual.nome){
+        if (categoriaAtual.pontosCategoria[i].nome == usuarioAtual.nome) {
 
-            categoria.pontosCategoria[i].pontuacao = pontuacao;
-            usuarioAtual.pontuacao = pontuacao;
-        } 
+            categoriaAtual.pontosCategoria[i].pontuacao += pontuacao;
+            usuarioAtual.pontuacao += pontuacao;
+        }
     }
-    
+
 }
 //Feito, não testado
 function listarPontuacaoCategoria(categoria, usuarioAtual) {
@@ -41,11 +37,11 @@ function listarPontuacaoCategoria(categoria, usuarioAtual) {
     categoria.pontosCategoria.sort((a, b) => b.pontuacao - a.pontuacao)
 
     for (let i = 0; i < categoria.pontosCategoria.length; i++) {
-        if(categoria.pontosCategoria[i].nome == usuarioAtual.nome){
+        if (categoria.pontosCategoria[i].nome == usuarioAtual.nome) {
             texto += `${i + 1}º - ${categoria.pontosCategoria[i].nome} - 
             ${categoria.pontosCategoria[i].pontuacao} PTS \n `
         }
-       
+
     }
     return `${texto}`
 }
@@ -60,4 +56,4 @@ function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alg
     }
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria, contabilizarPontuacao}
+export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria, contabilizarPontuacao }

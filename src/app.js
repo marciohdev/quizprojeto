@@ -2,7 +2,7 @@
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
 
-import rotas from './rotas.js'
+import rotas from './rotas/rotas.js'
 import { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria } from './util.js';
 
 
@@ -66,11 +66,11 @@ function telaListaPerguntas(categoriaEscolhida) {
     /*Pra contabilizar a pontuacao, chamem a funcao contabilizarPontuacao(dentro de útil),
     ela recebe como parametro a pontuacao advinda das perguntas respondidas, 
     o usuarioAtual e a CategoriaAtual    */
-    
+
     telaPontuacaoGeral();
 }
 
-function telaListaPontuacaoCategoria(){
+function telaListaPontuacaoCategoria() {
 
     let textoPrompt = listarPontuacaoCategoria();
 }
