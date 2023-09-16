@@ -3,7 +3,7 @@
 //const { validarSairPrograma } = require("./funcoes");
 
 import rotas from './rotas/rotas.js'
-import { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria } from './util.js';
+import { listarPontuacaoGeral, verificarCampoEmBranco } from './util.js';
 
 
 //Check
