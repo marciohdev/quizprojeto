@@ -1,6 +1,7 @@
 
 import { bancoUsuarios } from './banco_de_dados.js';
 
+//Feito
 function listarPontuacaoGeral() {
     let texto = ''
 
@@ -17,7 +18,7 @@ function listarPontuacaoGeral() {
 }
 
 //Feito, não testado
-function somarPontuacao(pontuacao, usuarioAtual, categoriaAtual) {
+function adicionarPontuacao(pontuacao, usuarioAtual, categoriaAtual) {
 
     for (let i = 0; i < categoriaAtual.pontosCategoria.length(); i++) {
 
@@ -28,22 +29,6 @@ function somarPontuacao(pontuacao, usuarioAtual, categoriaAtual) {
         }
     }
 
-}
-//Feito, não testado
-function listarPontuacaoCategoria(categoria, usuarioAtual) {
-    let texto = ''
-
-    //ordenando o array pontosCategoria através de um sort
-    categoria.pontosCategoria.sort((a, b) => b.pontuacao - a.pontuacao)
-
-    for (let i = 0; i < categoria.pontosCategoria.length; i++) {
-        if (categoria.pontosCategoria[i].nome == usuarioAtual.nome) {
-            texto += `${i + 1}º - ${categoria.pontosCategoria[i].nome} - 
-            ${categoria.pontosCategoria[i].pontuacao} PTS \n `
-        }
-
-    }
-    return `${texto}`
 }
 
 function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alguma coisa
@@ -56,4 +41,4 @@ function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alg
     }
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBranco, listarPontuacaoCategoria, contabilizarPontuacao }
+export { listarPontuacaoGeral, verificarCampoEmBranco, adicionarPontuacao }

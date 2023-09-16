@@ -29,4 +29,23 @@ function validarCategoriaEscolhida(categoriaEscolhida) {//Verifica se a categori
     }
 }
 
-export { validarCategoriaEscolhida, listarCategoriasPrompt }
+//Feito, não testado
+function listarPontuacaoCategoria(categoriaAtual, usuarioAtual) {
+    let texto = ''
+
+    //ordenando o array pontosCategoria através de um sort
+    categoriaAtual.pontosCategoria.sort((a, b) => b.pontuacao - a.pontuacao)
+
+    for (let i = 0; i < categoria.pontosCategoria.length; i++) {
+
+        if (categoriaAtual.pontosCategoria[i].nome == usuarioAtual.nome) {
+
+            texto += `${i + 1}º - ${categoriaAtual.pontosCategoria[i].nome} - 
+            ${categoriaAtual.pontosCategoria[i].pontuacao} PTS \n `
+        }
+
+    }
+    return `${texto}`
+}
+
+export { validarCategoriaEscolhida, listarCategoriasPrompt, listarPontuacaoCategoria }
