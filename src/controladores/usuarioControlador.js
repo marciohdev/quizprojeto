@@ -28,7 +28,7 @@ function efetuarLogin(nomeUsuario, senhaUsuario) { //função usada por triagem 
     for (let i = 0; i < bancoUsuarios.length; i++) {
 
         if ((nomeUsuario == bancoUsuarios[i].nome) && (senhaUsuario == bancoUsuarios[i].senha)) {
-            console.log("Passando no true")
+            alert(`Bem-vindo novamente, ${nomeUsuario}!`)
             return true;
         }
     }
