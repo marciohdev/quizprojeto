@@ -84,7 +84,7 @@ let pergunta7 = new Pergunta (programacao, "O que é uma string em programação
 let pergunta8 = new Pergunta (programacao, "O que é um array (ou vetor) em programação?",
 [
     {opcao: "a) Uma estrutura de controle", correta: false },
-    {opcao: "b) Um tipo de dado para armazenar texto", correta: false},
+    {opcao: "b) Um tipo de dado para armazenar números", correta: false},
     {opcao: "c) Uma coleção de elementos", correta: true },
     {opcao: "d) Uma função matemática", correta: false }     
 ]
@@ -130,7 +130,7 @@ let pergunta13 = new Pergunta (programacao, "O que é depuração em programaç�
 [
     {opcao: "a) Escrever código sem erros", correta: false },
     {opcao: "b) Testar um programa para garantir que ele funcione corretamente", correta: true},
-    {opcao: "c) Melhorar o desempenho de um programa", correta: false },
+    {opcao: "c) A reescrita de um programa do zero", correta: false },
     {opcao: "d) Documentar o código", correta: false }     
 ]
 )
