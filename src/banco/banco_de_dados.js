@@ -16,298 +16,46 @@ usuario1.pontuacao = 20;
 //CRIAÇÃO DAS CATEGORIAS PADRÃO DO SISTEMA
 let logica = new Categoria("logica")
 let javascript = new Categoria("Javascript")
-//-> Exportadas para banco_de_dados no final
 
-// let pergunta1 = new Pergunta(programacao, "Qual é o principal objetivo da lógica de programação?",
-//     [
-//         { opcao: "a) Escrever código de forma rápida", correta: false },
-//         { opcao: "b) Resolver problemas de forma eficiente", correta: true },
-//         { opcao: "c) Criar interfaces gráficas atraentes", correta: false },
-//         { opcao: "d) Depurar código existente", correta: false }
-//     ]
-// )
-
-// let pergunta2 = new Pergunta(programacao, "O que é um algoritmo?",
-//     [
-//         { opcao: "a) Um erro no código de programação", correta: false },
-//         { opcao: "b) Um programa de computador", correta: false },
-//         { opcao: "c) Uma sequência de instruções para resolver um problema", correta: true },
-//         { opcao: "d) Um sistema operacional", correta: false }
-//     ]
-// )
-
-// let pergunta3 = new Pergunta(programacao, "O que é uma variável em programação?",
-//     [
-//         { opcao: "a) Um valor constante", correta: false },
-//         { opcao: "b) Uma instrução condicional", correta: false },
-//         { opcao: "c) Um local para armazenar dados", correta: true },
-//         { opcao: "d) Um loop", correta: false }
-//     ]
-// )
-
-// let pergunta4 = new Pergunta(programacao, "Qual é a estrutura de controle usada para repetir um bloco de código várias vezes em um programa?",
-//     [
-//         { opcao: "a) Condição", correta: false },
-//         { opcao: "b) Variável", correta: false },
-//         { opcao: "c) Função", correta: false },
-//         { opcao: "d) Loop", correta: true }
-//     ]
-// )
-
-// let pergunta5 = new Pergunta(programacao, "Em programação, o que é uma condição?",
-//     [
-//         { opcao: "a) Um tipo de dado", correta: false },
-//         { opcao: "b) Um erro de sintaxe", correta: false },
-//         { opcao: "c) Uma instrução de repetição", correta: false },
-//         { opcao: "d) Uma expressão que avalia como verdadeira ou falsa", correta: true }
-//     ]
-// )
-
-// let pergunta6 = new Pergunta(programacao, "Qual é o operador usado para comparar se dois valores são iguais em programação?",
-//     [
-//         { opcao: "a) ==", correta: true },
-//         { opcao: "b) ++", correta: false },
-//         { opcao: "c) =", correta: false },
-//         { opcao: "d) !=", correta: false }
-//     ]
-// )
-
-// let pergunta7 = new Pergunta(programacao, "O que é uma string em programação?",
-//     [
-//         { opcao: "a) Um tipo de dado para armazenar números inteiros", correta: false },
-//         { opcao: "b) Um tipo de dado para armazenar texto", correta: true },
-//         { opcao: "c) Uma estrutura de repetição", correta: false },
-//         { opcao: "d) Uma função matemática", correta: false }
-//     ]
-// )
-
-// let pergunta8 = new Pergunta(programacao, "O que é um array (ou vetor) em programação?",
-//     [
-//         { opcao: "a) Uma estrutura de controle", correta: false },
-//         { opcao: "b) Um tipo de dado para armazenar números", correta: false },
-//         { opcao: "c) Uma coleção de elementos", correta: true },
-//         { opcao: "d) Uma função matemática", correta: false }
-//     ]
-// )
-
-// let pergunta9 = new Pergunta(programacao, "Em programação, o que é um operador lógico AND?",
-//     [
-//         { opcao: "a) Um operador que verifica se dois valores são iguais", correta: false },
-//         { opcao: "b) Um operador que verifica se pelo menos um dos valores é verdadeiro", correta: false },
-//         { opcao: "c) Um operador que verifica se ambos os valores são verdadeiros", correta: true },
-//         { opcao: "d) Um operador que verifica se nenhum dos valores é verdadeiro", correta: false }
-//     ]
-// )
-
-// let pergunta10 = new Pergunta(programacao, "O que é escopo de uma variável em programação?",
-//     [
-//         { opcao: "a) O nome de uma variável", correta: false },
-//         { opcao: "b) O valor de uma variável", correta: false },
-//         { opcao: "c) A área do programa onde uma variável é válida e pode ser acessada", correta: true },
-//         { opcao: "d) O tipo de dado de uma variável", correta: false }
-//     ]
-// )
-
-// let pergunta11 = new Pergunta(programacao, "O que é recursão em programação?",
-//     [
-//         { opcao: "a) Um tipo de erro", correta: false },
-//         { opcao: "b) Uma estrutura de controle", correta: false },
-//         { opcao: "c) Uma variável global", correta: false },
-//         { opcao: "d) Uma função que chama a si mesma", correta: true }
-//     ]
-// )
-
-// let pergunta12 = new Pergunta(programacao, "O que é refatoração em programação?",
-//     [
-//         { opcao: "a) Criar um novo programa do zero", correta: false },
-//         { opcao: "b) Melhorar a estrutura e legibilidade do código sem alterar seu comportamento", correta: true },
-//         { opcao: "c) Testar o código em diferentes sistemas operacionais", correta: false },
-//         { opcao: "d) Depurar o código", correta: false }
-//     ]
-// )
-
-// let pergunta13 = new Pergunta(programacao, "O que é depuração em programação?",
-//     [
-//         { opcao: "a) Escrever código sem erros", correta: false },
-//         { opcao: "b) Testar um programa para garantir que ele funcione corretamente", correta: true },
-//         { opcao: "c) A reescrita de um programa do zero", correta: false },
-//         { opcao: "d) Documentar o código", correta: false }
-//     ]
-// )
-
-// let pergunta14 = new Pergunta(programacao, "O que é um loop while em programação?",
-//     [
-//         { opcao: "a) Um tipo de dado", correta: false },
-//         { opcao: "b) Uma função matemática", correta: true },
-//         { opcao: "b) Uma estrutura de repetição que executa um bloco de código enquanto uma condição for verdadeira", correta: false },
-//         { opcao: "d) Uma variável", correta: false }
-//     ]
-// )
-
-// let pergunta15 = new Pergunta(programacao, "Em programação, o que é uma função?",
-//     [
-//         { opcao: "a) Uma sequência de números aleatórios", correta: false },
-//         { opcao: "b) Um operador lógico", correta: false },
-//         { opcao: "c) Um tipo de dado", correta: false },
-//         { opcao: "d) Um bloco de código reutilizável", correta: true }
-//     ]
-// )
-
-// let pergunta16 = new Pergunta(javascript, "Qual palavra-chave é usada para declarar uma variável em JavaScript?",
-//     [
-//         { opcao: "a) var", correta: true },
-//         { opcao: "b) variable", correta: false },
-//         { opcao: "c) v", correta: false },
-//         { opcao: "d) declare", correta: false }
-//     ]
-// )
-
-// let pergunta17 = new Pergunta(javascript, "Qual função é usada para exibir algo no console do navegador?",
-//     [
-//         { opcao: "a) show()", correta: false },
-//         { opcao: "b) display()", correta: false },
-//         { opcao: "c) print()", correta: false },
-//         { opcao: "d) log()", correta: true }
-//     ]
-// )
-
-// let pergunta18 = new Pergunta(javascript, "O que é uma matriz em JavaScript?",
-//     [
-//         { opcao: "a) Um tipo de loop", correta: false },
-//         { opcao: "b) Uma coleção ordenada de valores", correta: true },
-//         { opcao: "c) Uma função", correta: false },
-//         { opcao: "d) Uma classe", correta: false }
-//     ]
-// )
-
-// let pergunta19 = new Pergunta(javascript, "Como você chama uma função em JavaScript?",
-//     [
-//         { opcao: "a) executeFunction()", correta: false },
-//         { opcao: "b) callFunction()", correta: false },
-//         { opcao: "c) functionName()", correta: true },
-//         { opcao: "d) runFunction()", correta: false }
-//     ]
-// )
-
-// let pergunta20 = new Pergunta(javascript, "Qual é a estrutura de controle usada para executar um bloco de código repetidamente em JavaScript?",
-//     [
-//         { opcao: "a) if", correta: false },
-//         { opcao: "b) for", correta: true },
-//         { opcao: "c) switch", correta: false },
-//         { opcao: "d) try", correta: false }
-//     ]
-// )
-
-// let pergunta21 = new Pergunta(javascript, "Qual é a maneira correta de declarar uma constante em JavaScript?",
-//     [
-//         { opcao: "a) constant myConst = 10;", correta: false },
-//         { opcao: "b) var myConst = 10;", correta: false },
-//         { opcao: "c) let myConst = 10;", correta: false },
-//         { opcao: "d) const myConst = 10;", correta: true }
-//     ]
-// )
-
-// let pergunta22 = new Pergunta(javascript, "Qual método é usado para adicionar um elemento ao final de uma matriz em JavaScript?",
-//     [
-//         { opcao: "a) push()", correta: true },
-//         { opcao: "b) add()", correta: false },
-//         { opcao: "c) append()", correta: false },
-//         { opcao: "d) insert()", correta: false }
-//     ]
-// )
-
-// let pergunta23 = new Pergunta(javascript, "Qual função é usada para converter uma string em um número não fracionado em JavaScript?",
-//     [
-//         { opcao: "a) toInt()", correta: false },
-//         { opcao: "b) parseNumber()", correta: false },
-//         { opcao: "c) parseInt()", correta: true },
-//         { opcao: "d) convertNumber()", correta: false }
-//     ]
-// )
-
-// let pergunta24 = new Pergunta(javascript, "Qual dos seguintes não é um tipo de dado primitivo em JavaScript?",
-//     [
-//         { opcao: "a) Number", correta: false },
-//         { opcao: "b) String", correta: false },
-//         { opcao: "c) Array", correta: true },
-//         { opcao: "d) Boolean", correta: false }
-//     ]
-// )
-
-// let pergunta25 = new Pergunta(javascript, "Qual dos seguintes não é um tipo de dado em JavaScript?",
-//     [
-//         { opcao: "a) String", correta: false },
-//         { opcao: "b) Null", correta: false },
-//         { opcao: "c) Float", correta: false },
-//         { opcao: "d) Double", correta: true }
-//     ]
-// )
-
-// let pergunta26 = new Pergunta(javascript, "Qual método é usado para adicionar um elemento ao início de uma matriz em JavaScript?",
-//     [
-//         { opcao: "a) unshift()", correta: true },
-//         { opcao: "b) push()", correta: false },
-//         { opcao: "c) add()", correta: false },
-//         { opcao: "d) append()", correta: false }
-//     ]
-// )
-
-// let pergunta27 = new Pergunta(javascript, "Qual estrutura de controle é usada para executar um bloco de código quando uma condição é falsa em JavaScript?",
-//     [
-//         { opcao: "a) if", correta: false },
-//         { opcao: "b) while", correta: false },
-//         { opcao: "c) for", correta: false },
-//         { opcao: "d) else", correta: true }
-//     ]
-// )
-
-// let pergunta28 = new Pergunta(javascript, "Qual método é usado para remover o último elemento de uma matriz em JavaScript?",
-//     [
-//         { opcao: "a) pop()", correta: true },
-//         { opcao: "b) remove()", correta: false },
-//         { opcao: "c) delete()", correta: false },
-//         { opcao: "d) shift()", correta: false }
-//     ]
-// )
-
-// let pergunta29 = new Pergunta(javascript, "O que a função parseFloat() faz em JavaScript?",
-//     [
-//         { opcao: "a) Converte uma string em um número decimal", correta: true },
-//         { opcao: "b) Converte uma string em um número inteiro", correta: false },
-//         { opcao: "c) Converte uma string em uma data", correta: false },
-//         { opcao: "d) Converte uma string em um objeto", correta: false }
-//     ]
-// )
-
-// let pergunta30 = new Pergunta(javascript, "Qual método é usado para encontrar o número de elementos em uma matriz em JavaScript?",
-//     [
-//         { opcao: "a) count()", correta: false },
-//         { opcao: "b) length()", correta: true },
-//         { opcao: "c) size()", correta: false },
-//         { opcao: "d) elements()", correta: false }
-//     ]
-// )
 
 //-> Exportados para o banco de dados no final
 
 let bancoUsuarios = [usuario1, usuario2, usuario3];
 let bancoPerguntas = [
-    /*pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, pergunta9, pergunta10, pergunta11, pergunta12, pergunta13, pergunta14, pergunta15, pergunta16, pergunta17, pergunta18, pergunta19, pergunta20, pergunta21, pergunta22, pergunta23, pergunta24, pergunta25, pergunta26, pergunta27, pergunta28, pergunta29, pergunta30*/
-    new Pergunta(logica, "O que é um loop?", "1 - Uma fruta", "2 - Uma estrutura de repetição", "2"),
-    new Pergunta(javascript, "O que é uma variável?", "1 - Um número", "2 - Um contêiner para armazenar dados", "2"),
-    new Pergunta(logica, "O que é uma condição?", "1 - Uma situação difícil", "2 - Uma expressão que avalia verdadeiro ou falso", "2"),
-    new Pergunta(javascript, "O que é uma função em JavaScript?", "1 - Um tipo de dado", "2 - Um bloco de código reutilizável", "2"),
-    new Pergunta(logica, "O que é um algoritmo?", "1 - Uma receita de bolo", "2 - Um conjunto de instruções passo a passo para resolver um problema", "2"),
-    new Pergunta(javascript, "Qual é a sintaxe correta para um comentário em JavaScript?", "1 - // Este é um comentário", "2 -  Este é um comentário ", "1"),
-    new Pergunta(logica, "O que é uma variável booleana?", "1 - Uma variável que armazena um número", "2 - Uma variável que armazena verdadeiro ou falso", "2"),
-    new Pergunta(javascript, "Como você declara uma variável em JavaScript?", "1 - var minhaVariavel;", "2 - variavel = 10;", "1"),
-    new Pergunta(logica, "O que é um pseudocódigo?", "1 - Um código falso", "2 - Uma representação de um algoritmo em linguagem natural", "2"),
-    new Pergunta(javascript, "Qual é a função do operador '==' em JavaScript?", "1 - Verificar se duas variáveis são idênticas", "2 - Comparar duas variáveis sem levar em consideração o tipo", "2")
+
+    new Pergunta(logica, "Qual é o principal objetivo da lógica de programação?", "1 - Escrever código de forma rápida.", "2 - Resolver problemas de forma eficiente.", "3 - Criar interfaces gráficas atraentes.", "4 - Depurar código existente.", 2),
+    new Pergunta(logica, "O que é um algoritmo?", "1 - Um erro no código de programação.", "2 - Um programa de computador.", "3 - Uma sequencia de instruções para resolver um problema", "4 - Um sistema Operacional.", 3),
+    new Pergunta(logica, "O que é uma variável na programacao?", "1 - Um valor constante", "2 - Uma instrução condicional", "3 - Um local para armazenar dados", "4 - Um loop", 3),
+    new Pergunta(logica, "Qual é a estrutura de controle usada para repetir um bloco de código várias vezes?", "1 - Condicional", "2 - Variável", "3 - Função", "4 - Loop", 4),
+    new Pergunta(logica, "Em programação, o que é uma condição?", "1 - Um tipo de dado", "2 - Um erro de sintaxe", "3 - Uma instrução de repetição", "4 - Uma expressão que avalia como verdadeira ou falsa", 4),
+    new Pergunta(logica, "Qual é o operador usado para comparar se dois valores são iguais em programação?", "1 - == (igualdade)", "2 - ++ (incremento)", "3 - = (atribuição)", "4 - != (diferente)", 1),
+    new Pergunta(logica, "O que é uma string em programação?", "1 - Um tipo de dado para armazenar números inteiros", "2 - Um tipo de dado para armazenar texto", "3 - Uma estrutura de repetição", "4 - Uma função matemática", 2),
+    new Pergunta(logica, "O que é um array (ou vetor) em programação?", "1 - Uma estrutura de controle", "2 - Um tipo de dado para armazenar números", "3 - Uma coleção de elementos", "4 - Uma função matemática", 3),
+    new Pergunta(logica, "Em programação, o que é um operador lógico AND?", "1 - Um operador que verifica se dois valores são iguais", "2 - Um operador que verifica se pelo menos um dos valores é verdadeiro", "3 - Um operador que verifica se ambos os valores são verdadeiros", "4 - Um operador que verifica se nenhum dos valores é verdadeiro", 3),
+    new Pergunta(logica, "O que é escopo de uma variável em programação?", "1 - O nome de uma variável", "2 - O valor de uma variável", "3 - A área do programa onde uma variável é válida e pode ser acessada", "4 - O tipo de dado de uma variável", 3),
+    new Pergunta(logica, "O que é recursão em programação?", "1 - Um tipo de erro", "2 - Uma estrutura de controle", "3 - Uma variável global", "4 - Uma função que chama a si mesma", 4),
+    new Pergunta(logica, "O que é refatoração em programação?", "1 - Criar um novo programa do zero", "2 - Melhorar a estrutura e legibilidade do código sem alterar seu comportamento", "3 - Testar o código em diferentes sistemas operacionais", "4 - Depurar o código", 2),
+    new Pergunta(logica, "O que é depuração em programação?", "1 - Escrever código sem erros", "2 - Testar um programa para garantir que ele funcione corretamente", "3 - A reescrita de um programa do zero", "4 - Documentar o código", 2),
+    new Pergunta(logica, "O que é um loop while em programação?", "1 - Um tipo de dado", "2 - Uma função matemática", "3 - Uma estrutura de repetição que executa um bloco de código enquanto uma condição for verdadeira", "4 - Uma variável", 3),
+    new Pergunta(logica, "Em programação, o que é uma função?", "1 - Uma sequência de números aleatórios", "2 - Um operador lógico", "3 - Um tipo de dado", "4 - Um bloco de código reutilizável", 4),
+    new Pergunta(javascript, "Qual palavra-chave é usada para declarar uma variável em JavaScript?", "1 - var", "2 - variable", "3 - v", "4 - declare", 1),
+    new Pergunta(javascript, "Qual função é usada para exibir algo no console do navegador?", "1 - show()", "2 - display()", "3 - print()", "4 - log()", 4),
+    new Pergunta(javascript, "O que é uma matriz em JavaScript?", "1 - Um tipo de loop", "2 - Uma coleção ordenada de valores", "3 - Uma função", "4 - Uma classe", 2),
+    new Pergunta(javascript, "Como você chama uma função em JavaScript?", "1 - executeFunction()", "2 - callFunction()", "3 - functionName()", "4 - runFunction()", 3),
+    new Pergunta(javascript, "Qual é a estrutura de controle usada para executar um bloco de código repetidamente em JavaScript?", "1 - if", "2 - for", "3 - switch", "4 - try", 2),
+    new Pergunta(javascript, "Qual é a maneira correta de declarar uma constante em JavaScript?", "1 - constant myConst = 10;", "2 - var myConst = 10;", "3 - let myConst = 10;", "4 - const myConst = 10;", 4),
+    new Pergunta(javascript, "Qual método é usado para adicionar um elemento ao final de uma matriz em JavaScript?", "1 - push()", "2 - add()", "3 - append()", "4 - insert()", 1),
+    new Pergunta(javascript, "Qual função é usada para converter uma string em um número não fracionado em JavaScript?", "1 - toInt()", "2 - parseNumber()", "3 - parseInt()", "4 - convertNumber()", 3),
+    new Pergunta(javascript, "Qual dos seguintes não é um tipo de dado primitivo em JavaScript?", "1 - Number", "2 - String", "3 - Array", "4 - Boolean", 3),
+    new Pergunta(javascript, "Qual dos seguintes não é um tipo de dado em JavaScript?", "1 - String", "2 - Null", "3 - Float", "4 - Double", 4),
+    new Pergunta(javascript, "Qual método é usado para adicionar um elemento ao início de uma matriz em JavaScript?", "1 - unshift()", "2 - push()", "3 - add()", "4 - append()", 1),
+    new Pergunta(javascript, "Qual estrutura de controle é usada para executar um bloco de código quando uma condição é falsa em JavaScript?", "1 - if", "2 - while", "3 - for", "4 - else", 4),
+    new Pergunta(javascript, "Qual método é usado para remover o último elemento de uma matriz em JavaScript?", "1 - pop()", "2 - remove()", "3 - delete()", "4 - shift()", 1),
+    new Pergunta(javascript, "O que a função parseFloat() faz em JavaScript?", "1 - Converte uma string em um número decimal", "2 - Converte uma string em um número inteiro", "3 - Converte uma string em uma data", "4 - Converte uma string em um objeto", 1),
+    new Pergunta(javascript, "Qual método é usado para encontrar o número de elementos em uma matriz em JavaScript?", "1 - count()", "2 - length()", "3 - size()", "4 - elements()", 2)
+
 ];
 
 let bancoCategorias = [logica, javascript];
-
-
-
 
 export { bancoUsuarios, bancoCategorias, bancoPerguntas } 

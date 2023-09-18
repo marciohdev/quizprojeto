@@ -78,8 +78,9 @@ function telaListaPerguntas(categoriaAtual) {
     for (let i = 0; i < perguntasDaCategoria.length; i++) {
         const perguntaAtual = perguntasDaCategoria[i];
 
-        const respostaUsuario = prompt(`Pergunta ${i + 1}: ${perguntaAtual.pergunta}\n${perguntaAtual.alternativa1}\n${perguntaAtual.alternativa2}`);
+        const respostaUsuario = prompt(`Pergunta ${i + 1}: ${perguntaAtual.pergunta}\n${perguntaAtual.alternativa1}\n${perguntaAtual.alternativa2}\n${perguntaAtual.alternativa3}\n${perguntaAtual.alternativa4}`);
 
+        //FALTA VALIDAÇÃO DA RESPOSTA AQUI.
         if (respostaUsuario === perguntaAtual.opcaoCorreta) {
             pontuacaoRecebida++;
             alert("Resposta correta!");
