@@ -1,16 +1,25 @@
 
+
 //const funcoesQuiz = require('./funcoes')
 //const { validarSairPrograma } = require("./funcoes");
 
-import rotas from './rotas/rotas.js'
-import { listarPontuacaoGeral, verificarCampoEmBranco } from './util.js';
+import { triagemUsuario } from './controladores/usuarioControlador.js';
+import {
+    adicionarPontuacao, listarPontuacaoGeral, verificarCampoEmBranco,
+    listarCategoriasPrompt, validarCategoriaEscolhida
+} from './util/util.js';
+
+var usuarioAtual;
+var categoriaAtual;
+
+//AQUI O PROGRAMA INICIA
+telaInicial();
 
 
 //Check
 function telaInicial() {
     let nomeUsuario = "";
     let senhaUsuario = "";
-    let usuarioCheck = false;
 
     nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n (Pressione 0 para sair)")
 
@@ -25,10 +34,9 @@ function telaInicial() {
                 alert("Volte Sempre!")
             } else {
                 if (!verificarCampoEmBranco(senhaUsuario)) {
-                    usuarioCheck = rotas.triagemUsuario(nomeUsuario, senhaUsuario);
-                    //criarNovoUsuario(nomeUsuario);
+                    usuarioAtual = triagemUsuario(nomeUsuario, senhaUsuario); //PEGO USUARIO ATUAL
 
-                    if (usuarioCheck) {
+                    if (usuarioAtual) {
                         telaListaCategorias();
                     } else {
                         telaInicial();
@@ -40,18 +48,19 @@ function telaInicial() {
             }
         } else {
             telaInicial();
-
         }
     }
 }
 
-//Check ->Sendo chamada pela tela inicial
+//Check ->Sendo chamada pela tela inicial caso o usuário consiga logar.
 function telaListaCategorias() {
-    let categorias = rotas.listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
-    let categoriaEscolhida = parseInt(prompt(categorias)); //Recebendo o valor da tela
+    let textocategorias = listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
+    let categoriaEscolhida = parseInt(prompt(textocategorias));
 
-    if (rotas.validarCategoriaEscolhida(categoriaEscolhida)) {
-        telaListaPerguntas(categoriaEscolhida) //Envia como parâmetro a posicao da categoria escolhida pelo usuario
+
+    categoriaAtual = validarCategoriaEscolhida(categoriaEscolhida); //PEGO CATEGORIA ATUAL
+    if (categoriaAtual) {
+        telaListaPerguntas(categoriaAtual)
     } else {
         alert("Categoria Inválida")
         telaListaCategorias();
@@ -59,33 +68,45 @@ function telaListaCategorias() {
 
 }
 
-//Check ->Sendo chamada pela tela de listagem de categorias
-function telaListaPerguntas(categoriaEscolhida) {
+//Check ->Lista de Perguntas e resolução de questões.
+function telaListaPerguntas(categoriaAtual) {
 
-    rotas.listarPerguntasCategoria(categoriaEscolhida - 1)
-    /*Pra contabilizar a pontuacao, chamem a funcao contabilizarPontuacao(dentro de útil),
-    ela recebe como parametro a pontuacao advinda das perguntas respondidas, 
-    o usuarioAtual e a CategoriaAtual    */
+    let pontuacaoRecebida = 0;
+    const perguntasDaCategoria = categoriaAtual.listarPerguntasCategoria()
 
+
+    for (let i = 0; i < perguntasDaCategoria.length; i++) {
+        const perguntaAtual = perguntasDaCategoria[i];
+
+        const respostaUsuario = prompt(`Pergunta ${i + 1}: ${perguntaAtual.pergunta}\n${perguntaAtual.alternativa1}\n${perguntaAtual.alternativa2}`);
+
+        if (respostaUsuario === perguntaAtual.opcaoCorreta) {
+            pontuacaoRecebida++;
+            alert("Resposta correta!");
+        } else {
+            alert("Resposta incorreta. A resposta correta é: " + perguntaAtual.opcaoCorreta);
+        }
+    }
+
+    adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual);
+
+    telaListaPontuacaoCategoria();
+}
+
+//PENDENTE - FUNCIONANDO MAS FALTA FAZER O ALERT
+function telaListaPontuacaoCategoria() {
+
+    let textoPrompt = categoriaAtual.listarPontuacaoCategoria();
+    console.log(textoPrompt)
     telaPontuacaoGeral();
 }
 
-function telaListaPontuacaoCategoria() {
-
-    let textoPrompt = listarPontuacaoCategoria();
-}
-
-//Check
+//PENDENTE - FUNCIONANDO MAS FALTA FAZER O PROMPT.
 function telaPontuacaoGeral() {
     let textoPrompt = listarPontuacaoGeral();
     console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
+    telaInicial(); //Teste
 }
-
-
-//telaPontuacaoGeral();
-
-
-telaInicial();
 
 
 

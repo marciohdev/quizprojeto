@@ -1,13 +1,14 @@
 import { Usuario } from '../modelos/Usuario.js'
-import { bancoUsuarios } from '../banco_de_dados.js'
+import { bancoUsuarios } from '../banco/banco_de_dados.js'
 
 
 //FUNÇÕES
 function criarNovoUsuario(nomeUsuario, senhaUsuario) {//cria um novo usuário
 
-    bancoUsuarios.push(new Usuario(nomeUsuario, senhaUsuario))
+    const usuarioNovo = new Usuario(nomeUsuario, senhaUsuario)
+    bancoUsuarios.push(usuarioNovo)
     alert("Usuário criado com sucesso!")
-    return true;
+    return usuarioNovo;
 }
 
 function triagemUsuario(nomeUsuario, senhaUsuario) {
@@ -18,8 +19,8 @@ function triagemUsuario(nomeUsuario, senhaUsuario) {
         let usuarioLogado = efetuarLogin(nomeUsuario, senhaUsuario)
         return usuarioLogado;
     } else {
-        criarNovoUsuario(nomeUsuario, senhaUsuario);
-        return true;
+        let usuarioNovo = criarNovoUsuario(nomeUsuario, senhaUsuario);
+        return usuarioNovo;
     }
 }
 
@@ -29,7 +30,7 @@ function efetuarLogin(nomeUsuario, senhaUsuario) { //função usada por triagem 
 
         if ((nomeUsuario == bancoUsuarios[i].nome) && (senhaUsuario == bancoUsuarios[i].senha)) {
             alert(`Bem-vindo novamente, ${nomeUsuario}!`)
-            return true;
+            return bancoUsuarios[i];
         }
     }
     alert("Informações de login incorretas")
@@ -44,6 +45,6 @@ function verificarUsuarioExistente(nome) {//Verifica a existência de usuário c
             return true;
         }
     }
-    return false; //Caso não ache nome igual, retorna false
 }
+
 export { criarNovoUsuario, triagemUsuario, efetuarLogin, verificarUsuarioExistente }
