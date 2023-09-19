@@ -5,8 +5,8 @@
 
 import { triagemUsuario } from './controladores/usuarioControlador.js';
 import {
-    adicionarPontuacao, listarPontuacaoGeral, verificarCampoEmBranco,
-    listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta
+    adicionarPontuacao, listarPontuacaoGeral,
+    listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta, validarOpcaoFinal, verificarCampoEmBrancoInt, verificarCampoEmBrancoString
 } from './util/util.js';
 
 var usuarioAtual;
@@ -16,7 +16,7 @@ var categoriaAtual;
 telaInicial();
 
 
-//Check
+//Check.
 function telaInicial() {
     let nomeUsuario = "";
     let senhaUsuario = "";
@@ -25,15 +25,17 @@ function telaInicial() {
 
     if (nomeUsuario == "0" || nomeUsuario == null) {
         alert("Volte Sempre!")
+        return;
     } else {
-        if (!verificarCampoEmBranco(nomeUsuario)) {
+        if (!verificarCampoEmBrancoString(nomeUsuario)) {
 
             senhaUsuario = prompt("Insira a sua senha: \n (Pressione 0 para sair)")
 
             if (senhaUsuario == "0" || senhaUsuario == null) {
                 alert("Volte Sempre!")
+                return;
             } else {
-                if (!verificarCampoEmBranco(senhaUsuario)) {
+                if (!verificarCampoEmBrancoString(senhaUsuario)) {
                     usuarioAtual = triagemUsuario(nomeUsuario, senhaUsuario); //PEGO USUARIO ATUAL
 
                     if (usuarioAtual) {
@@ -52,23 +54,28 @@ function telaInicial() {
     }
 }
 
-//PENDENTE -> Verificar a validação do ESC/CANCELAR
+//Check.
 function telaListaCategorias() {
     let textocategorias = listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
+
     let categoriaEscolhida = parseInt(prompt(textocategorias));
 
+    if (!verificarCampoEmBrancoInt(categoriaEscolhida)) {
+        categoriaAtual = validarCategoriaEscolhida(categoriaEscolhida); //PEGO CATEGORIA ATUAL
+        if (categoriaAtual) {
+            telaListaPerguntas(categoriaAtual)
+        } else {
+            alert("Opção escolhida inválida. Tente novamente!")
+            telaListaCategorias();
+        }
 
-    categoriaAtual = validarCategoriaEscolhida(categoriaEscolhida); //PEGO CATEGORIA ATUAL
-    if (categoriaAtual) {
-        telaListaPerguntas(categoriaAtual)
     } else {
-        alert("Opção escolhida inválida. Tente novamente!")
         telaListaCategorias();
     }
 
 }
 
-//PENDENTE ->Verificar a validação do ESC/CANCELAR
+//Check.
 function telaListaPerguntas(categoriaAtual) {
 
     let pontuacaoRecebida = 0;
@@ -102,7 +109,7 @@ function telaListaPerguntas(categoriaAtual) {
     telaListaPontuacaoCategoria();
 }
 
-//PENDENTE - FUNCIONANDO MAS FALTA FAZER O ALERT
+//Check.
 function telaListaPontuacaoCategoria() {
 
     let textoPrompt = categoriaAtual.listarPontuacaoCategoria();
@@ -113,15 +120,28 @@ function telaListaPontuacaoCategoria() {
     telaPontuacaoGeral();
 }
 
-//PENDENTE - FUNCIONANDO MAS FALTA FAZER O PROMPT.
+//Check.
 function telaPontuacaoGeral() {
     let textoPrompt = listarPontuacaoGeral();
-    if (textoPrompt) {
-        alert("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
-    }
 
-    telaInicial(); //Teste
+    let opcao = parseInt(prompt(`*** RANKING GERAL DO QUIZ SOFTEX *** \n ${textoPrompt} \n 1 - Jogar Novamente \n 2 - Sair`))
+
+    if (!verificarCampoEmBrancoInt(opcao) && validarOpcaoFinal(opcao)) {
+
+        switch (opcao) {
+            case 1:
+                telaListaCategorias();
+                break;
+            case 2:
+                telaInicial();
+                break;
+        }
+
+    } else {
+        telaPontuacaoGeral();
+    }
 }
+
 
 
 

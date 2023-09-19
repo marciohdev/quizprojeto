@@ -34,7 +34,18 @@ function listarPontuacaoGeral() {
 
 //FUNÇÕES DE VALIDAÇÂO
 //Check
-function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alguma coisa
+function verificarCampoEmBrancoInt(atributo) {//verifica se o nome recebido tem alguma coisa
+
+    if (Number.isNaN(atributo)) {
+        console.log("teste")
+        alert("Campo em branco. Tente novamente!")
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function verificarCampoEmBrancoString(atributo) {//verifica se o nome recebido tem alguma coisa
 
     if (atributo == 0) {
         alert("Campo em branco. Tente novamente!")
@@ -43,7 +54,6 @@ function verificarCampoEmBranco(atributo) {//verifica se o nome recebido tem alg
         return false;
     }
 }
-
 //Check
 function validarCategoriaEscolhida(indiceCategoriaEscolhida) {//Verifica se a categoria escolhida é válida
     if (indiceCategoriaEscolhida) {
@@ -65,6 +75,16 @@ function validarRespostaPergunta(respostaEscolhida) {
     }
 }
 
+function validarOpcaoFinal(opcao) {
+    if (opcao > 0 && opcao < 3) {
+        return true;
+    } else {
+        alert("Opção escolhida inválida. Tente novamente!")
+        return false;
+    }
+}
+
+
 //PONTUAÇÂO
 //Check
 function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
@@ -84,4 +104,4 @@ function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
     return true;
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBranco, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta }
+export { listarPontuacaoGeral, verificarCampoEmBrancoString, verificarCampoEmBrancoInt, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta, validarOpcaoFinal }
