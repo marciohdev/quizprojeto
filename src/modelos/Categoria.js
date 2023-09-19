@@ -10,6 +10,10 @@ class Categoria {
         return this._nome;
     }
 
+    get getPontosCategoria() {
+        return this._pontosCategoria
+    }
+
     //Check
     listarPontuacaoCategoria() {
         let texto = ''

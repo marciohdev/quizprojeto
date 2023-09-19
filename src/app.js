@@ -6,7 +6,7 @@
 import { triagemUsuario } from './controladores/usuarioControlador.js';
 import {
     adicionarPontuacao, listarPontuacaoGeral, verificarCampoEmBranco,
-    listarCategoriasPrompt, validarCategoriaEscolhida
+    listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta
 } from './util/util.js';
 
 var usuarioAtual;
@@ -52,7 +52,7 @@ function telaInicial() {
     }
 }
 
-//Check ->Sendo chamada pela tela inicial caso o usuário consiga logar.
+//PENDENTE -> Verificar a validação do ESC/CANCELAR
 function telaListaCategorias() {
     let textocategorias = listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
     let categoriaEscolhida = parseInt(prompt(textocategorias));
@@ -62,32 +62,33 @@ function telaListaCategorias() {
     if (categoriaAtual) {
         telaListaPerguntas(categoriaAtual)
     } else {
-        alert("Categoria Inválida")
+        alert("Opção escolhida inválida. Tente novamente")
         telaListaCategorias();
     }
 
 }
 
-//Check ->Lista de Perguntas e resolução de questões.
+//PENDENTE ->Verificar a validação do ESC/CANCELAR
 function telaListaPerguntas(categoriaAtual) {
 
     let pontuacaoRecebida = 0;
     const perguntasDaCategoria = categoriaAtual.listarPerguntasCategoria()
 
-
-    for (let i = 0; i < perguntasDaCategoria.length; i++) {
+    for (let i = 0; i < 5; i++) {
         const perguntaAtual = perguntasDaCategoria[i];
 
         const respostaUsuario = parseInt(prompt(`Pergunta ${i + 1}: ${perguntaAtual.getPergunta}\n${perguntaAtual.getAlternativa1}\n${perguntaAtual.getAlternativa2}\n${perguntaAtual.getAlternativa3}\n${perguntaAtual.getAlternativa4}`));
 
-        //FALTA VALIDAÇÃO DA RESPOSTA AQUI.
-        console.log(perguntaAtual.getOpcaoCorreta)
-
-        if (respostaUsuario === perguntaAtual.getOpcaoCorreta) {
-            pontuacaoRecebida++;
-            alert("Resposta correta!");
+        if (validarRespostaPergunta(respostaUsuario)) {
+            if (respostaUsuario === perguntaAtual.getOpcaoCorreta) {
+                pontuacaoRecebida++;
+                alert("Resposta correta!");
+            } else {
+                alert("Resposta incorreta!");
+            }
         } else {
-            alert("Resposta incorreta!");
+            alert("Opção escolhida inválida. Tente novamente!")
+            i--; //Se não validado, fica na mesma pergunta.
         }
     }
 

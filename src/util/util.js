@@ -57,13 +57,21 @@ function validarCategoriaEscolhida(indiceCategoriaEscolhida) {//Verifica se a ca
     }
 }
 
+function validarRespostaPergunta(respostaEscolhida) {
+    if (respostaEscolhida < 1 || respostaEscolhida > 4 || Number.isNaN(respostaEscolhida)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 //PONTUAÇÂO
 //Check
 function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
 
-    for (let i = 0; i < categoriaAtual._pontosCategoria.length; i++) {
+    for (let i = 0; i < categoriaAtual.getPontosCategoria.length; i++) {
 
-        if (categoriaAtual._pontosCategoria[i].nome == usuarioAtual.getNome) {
+        if (categoriaAtual.getPontosCategoria[i].nome == usuarioAtual.getNome) {
 
             categoriaAtual.adicionarPontos(i, pontuacaoRecebida)
             usuarioAtual.adicionarPontuacao(pontuacaoRecebida)
@@ -75,4 +83,4 @@ function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
     usuarioAtual.adicionarPontuacao(pontuacaoRecebida);
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBranco, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida }
+export { listarPontuacaoGeral, verificarCampoEmBranco, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta }

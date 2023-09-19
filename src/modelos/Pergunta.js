@@ -5,7 +5,7 @@ class Pergunta {
         this._alternativa1 = alternativa1;
         this._alternativa2 = alternativa2;
         this._alternativa3 = alternativa3;
-        this._alternativa4 = alternativa4
+        this._alternativa4 = alternativa4;
         this._opcaoCorreta = opcaoCorreta;
     }
 
