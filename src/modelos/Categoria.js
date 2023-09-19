@@ -2,27 +2,32 @@ import { bancoPerguntas } from '../banco/banco_de_dados.js'
 
 class Categoria {
     constructor(nome) {
-        this.nome = nome;
-        this.pontosCategoria = []
+        this._nome = nome;
+        this._pontosCategoria = []
     }
 
+    get getNome() {
+        return this._nome;
+    }
+
+    //Pendente
     listarPontuacaoCategoria() {
         let texto = ''
 
-        this.pontosCategoria.sort((a, b) => b.pontuacao - a.pontuacao)
+        this._pontosCategoria.sort((a, b) => b.pontuacao - a.pontuacao)
 
-        for (let i = 0; i < this.pontosCategoria.length; i++) {
+        for (let i = 0; i < this._pontosCategoria.length; i++) {
 
-            texto += `${i + 1}º - ${this.pontosCategoria[i].nome} - ${this.pontosCategoria[i].pontuacao} PTS \n `
+            texto += `${i + 1}º - ${this._pontosCategoria[i].nome} - ${this._pontosCategoria[i].pontuacao} PTS \n `
         }
         return `${texto}`
     }
 
-
+    //check
     listarPerguntasCategoria() {
 
         //criando um array somente com as perguntas da categoria indicada
-        const perguntasDaCategoria = bancoPerguntas.filter(pergunta => pergunta.categoria.nome === this.nome);
+        const perguntasDaCategoria = bancoPerguntas.filter(pergunta => pergunta._categoria.getNome === this._nome);
 
         if (perguntasDaCategoria.length === 0) {
             alert("Categoria inválida ou não há perguntas nessa categoria.");
@@ -40,6 +45,14 @@ class Categoria {
         }
 
         return perguntasDaCategoria; //Já embaralhadas
+    }
+
+    //Pendente
+    adicionarPontos(nome, pontuacaoRecebida) {
+        this._pontosCategoria.push({
+            nome: nome,
+            pontuacao: pontuacaoRecebida
+        });
     }
 
 }

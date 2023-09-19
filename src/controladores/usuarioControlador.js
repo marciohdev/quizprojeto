@@ -28,7 +28,7 @@ function efetuarLogin(nomeUsuario, senhaUsuario) { //função usada por triagem 
 
     for (let i = 0; i < bancoUsuarios.length; i++) {
 
-        if ((nomeUsuario == bancoUsuarios[i].nome) && (senhaUsuario == bancoUsuarios[i].senha)) {
+        if ((nomeUsuario == bancoUsuarios[i].getNome) && (senhaUsuario == bancoUsuarios[i].getSenha)) {
             alert(`Bem-vindo novamente, ${nomeUsuario}!`)
             return bancoUsuarios[i];
         }
@@ -41,7 +41,7 @@ function verificarUsuarioExistente(nome) {//Verifica a existência de usuário c
 
     for (let i = 0; i < bancoUsuarios.length; i++) {
 
-        if (nome == bancoUsuarios[i].nome) {
+        if (nome == bancoUsuarios[i].getNome) {
             return true;
         }
     }

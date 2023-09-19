@@ -9,9 +9,9 @@ let usuario1 = new Usuario("Marcio", "Marcio")
 let usuario2 = new Usuario("Eloy", "Eloy")
 let usuario3 = new Usuario("Matheus", "Matheus")
 
-usuario3.pontuacao = 10;
-usuario2.pontuacao = 15;
-usuario1.pontuacao = 20;
+usuario3.setPontuacao = 10;
+usuario2.setPontuacao = 15;
+usuario1.setPontuacao = 20;
 
 //CRIAÇÃO DAS CATEGORIAS PADRÃO DO SISTEMA
 let logica = new Categoria("logica")

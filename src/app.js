@@ -78,14 +78,16 @@ function telaListaPerguntas(categoriaAtual) {
     for (let i = 0; i < perguntasDaCategoria.length; i++) {
         const perguntaAtual = perguntasDaCategoria[i];
 
-        const respostaUsuario = prompt(`Pergunta ${i + 1}: ${perguntaAtual.pergunta}\n${perguntaAtual.alternativa1}\n${perguntaAtual.alternativa2}\n${perguntaAtual.alternativa3}\n${perguntaAtual.alternativa4}`);
+        const respostaUsuario = parseInt(prompt(`Pergunta ${i + 1}: ${perguntaAtual.getPergunta}\n${perguntaAtual.getAlternativa1}\n${perguntaAtual.getAlternativa2}\n${perguntaAtual.getAlternativa3}\n${perguntaAtual.getAlternativa4}`));
 
         //FALTA VALIDAÇÃO DA RESPOSTA AQUI.
-        if (respostaUsuario === perguntaAtual.opcaoCorreta) {
+        console.log(perguntaAtual.getOpcaoCorreta)
+
+        if (respostaUsuario === perguntaAtual.getOpcaoCorreta) {
             pontuacaoRecebida++;
             alert("Resposta correta!");
         } else {
-            alert("Resposta incorreta. A resposta correta é: " + perguntaAtual.opcaoCorreta);
+            alert("Resposta incorreta. A resposta correta é: " + perguntaAtual.getOpcaoCorreta);
         }
     }
 
