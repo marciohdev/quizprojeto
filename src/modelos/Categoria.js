@@ -14,7 +14,7 @@ class Categoria {
         return this._pontosCategoria
     }
 
-    //Check
+    //ERRO - Se ele montar o texto, retorna true, se não retorna false;
     listarPontuacaoCategoria() {
         let texto = ''
 
@@ -25,6 +25,7 @@ class Categoria {
             texto += `${i + 1}º - ${this._pontosCategoria[i].nome} - ${this._pontosCategoria[i].pontuacao} PTS \n `
         }
         return `${texto}`
+
     }
 
     //check

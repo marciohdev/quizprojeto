@@ -62,7 +62,7 @@ function telaListaCategorias() {
     if (categoriaAtual) {
         telaListaPerguntas(categoriaAtual)
     } else {
-        alert("Opção escolhida inválida. Tente novamente")
+        alert("Opção escolhida inválida. Tente novamente!")
         telaListaCategorias();
     }
 
@@ -106,14 +106,20 @@ function telaListaPerguntas(categoriaAtual) {
 function telaListaPontuacaoCategoria() {
 
     let textoPrompt = categoriaAtual.listarPontuacaoCategoria();
-    console.log(textoPrompt)
+    if (textoPrompt) {
+        alert(`Ranking em ${categoriaAtual.getNome}: \n ${textoPrompt}`)
+    }
+
     telaPontuacaoGeral();
 }
 
 //PENDENTE - FUNCIONANDO MAS FALTA FAZER O PROMPT.
 function telaPontuacaoGeral() {
     let textoPrompt = listarPontuacaoGeral();
-    console.log("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
+    if (textoPrompt) {
+        alert("*** RANKING GERAL DO QUIZ SOFTEX *** \n" + textoPrompt)
+    }
+
     telaInicial(); //Teste
 }
 

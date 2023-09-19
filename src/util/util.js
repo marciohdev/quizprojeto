@@ -81,6 +81,7 @@ function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
     //Se essa pessoa não tiver jogado ainda esta categoria, cria-se o registro dela.
     categoriaAtual.criarPontos(usuarioAtual.getNome, pontuacaoRecebida);
     usuarioAtual.adicionarPontuacao(pontuacaoRecebida);
+    return true;
 }
 
 export { listarPontuacaoGeral, verificarCampoEmBranco, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta }
