@@ -87,11 +87,16 @@ function telaListaPerguntas(categoriaAtual) {
             pontuacaoRecebida++;
             alert("Resposta correta!");
         } else {
-            alert("Resposta incorreta. A resposta correta é: " + perguntaAtual.getOpcaoCorreta);
+            alert("Resposta incorreta!");
         }
     }
 
-    adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual);
+    if (pontuacaoRecebida > 0) {
+        alert(`Parabéns, você conseguiu ${pontuacaoRecebida} PTS`)
+        adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual);
+    } else {
+        alert('Estude mais, hoje você não conseguiu pontuar!')
+    }
 
     telaListaPontuacaoCategoria();
 }

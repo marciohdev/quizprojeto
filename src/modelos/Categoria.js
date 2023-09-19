@@ -10,7 +10,7 @@ class Categoria {
         return this._nome;
     }
 
-    //Pendente
+    //Check
     listarPontuacaoCategoria() {
         let texto = ''
 
@@ -47,12 +47,17 @@ class Categoria {
         return perguntasDaCategoria; //Já embaralhadas
     }
 
-    //Pendente
-    adicionarPontos(nome, pontuacaoRecebida) {
+    //Check
+    criarPontos(nome, pontuacaoRecebida) {
         this._pontosCategoria.push({
             nome: nome,
             pontuacao: pontuacaoRecebida
         });
+    }
+
+    //Check
+    adicionarPontos(i, pontuacaoRecebida) {
+        this._pontosCategoria[i].pontuacao += pontuacaoRecebida;
     }
 
 }

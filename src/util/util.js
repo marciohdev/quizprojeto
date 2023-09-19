@@ -58,26 +58,21 @@ function validarCategoriaEscolhida(indiceCategoriaEscolhida) {//Verifica se a ca
 }
 
 //PONTUAÇÂO
-//< --PENDENTE-->
+//Check
 function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
-
-    let cont = 0; //Esse contador serve pra saber se a pessoa já tem registro dentro da
-    //categoria ou não.
 
     for (let i = 0; i < categoriaAtual._pontosCategoria.length; i++) {
 
         if (categoriaAtual._pontosCategoria[i].nome == usuarioAtual.getNome) {
 
-            categoriaAtual._pontosCategoria[i].pontuacao += pontuacaoRecebida;
-            usuarioAtual.adicionarPontuacao(pontuacaoRecebida);
-            cont++;
+            categoriaAtual.adicionarPontos(i, pontuacaoRecebida)
+            usuarioAtual.adicionarPontuacao(pontuacaoRecebida)
+            return true;
         }
     }
-    //Se essa pessoa não tiver jogado ainda esta categoria, deve-se criar novo registro nesse array.
-    if (cont == 0) {
-        categoriaAtual.adicionarPontos(usuarioAtual.getNome, pontuacaoRecebida); //cria o registro e adiciona os pontos
-        usuarioAtual.adicionarPontuacao(pontuacaoRecebida); //adiciona na pontuação geral do usuário
-    }
+    //Se essa pessoa não tiver jogado ainda esta categoria, cria-se o registro dela.
+    categoriaAtual.criarPontos(usuarioAtual.getNome, pontuacaoRecebida);
+    usuarioAtual.adicionarPontuacao(pontuacaoRecebida);
 }
 
 export { listarPontuacaoGeral, verificarCampoEmBranco, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida }
