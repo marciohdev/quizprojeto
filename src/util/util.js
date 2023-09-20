@@ -32,30 +32,8 @@ function listarPontuacaoGeral() {
     return `${texto}`
 }
 
-//FUNÇÕES DE VALIDAÇÂO
-//Check
-function verificarCampoEmBrancoInt(atributo) {//verifica se o nome recebido tem alguma coisa
-
-    if (Number.isNaN(atributo)) {
-        console.log("teste")
-        alert("Campo em branco. Tente novamente!")
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function verificarCampoEmBrancoString(atributo) {//verifica se o nome recebido tem alguma coisa
-
-    if (atributo == 0) {
-        alert("Campo em branco. Tente novamente!")
-        return true;
-    } else {
-        return false;
-    }
-}
-//Check
-function validarCategoriaEscolhida(indiceCategoriaEscolhida) {//Verifica se a categoria escolhida é válida
+//ENCONTRAR CATEGORIA
+function encontrarCategoria(indiceCategoriaEscolhida) {//Verifica se a categoria escolhida é válida
     if (indiceCategoriaEscolhida) {
         if (indiceCategoriaEscolhida > bancoCategorias.length || indiceCategoriaEscolhida < 1) {
             return false;
@@ -67,6 +45,18 @@ function validarCategoriaEscolhida(indiceCategoriaEscolhida) {//Verifica se a ca
     }
 }
 
+//FUNÇÕES DE VALIDAÇÂO
+function verificarCampoEmBrancoString(atributo) {//verifica se o nome recebido tem alguma coisa
+
+    if (atributo == 0) {
+        alert("Campo em branco. Tente novamente!")
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 function validarRespostaPergunta(respostaEscolhida) {
     if (respostaEscolhida < 1 || respostaEscolhida > 4 || Number.isNaN(respostaEscolhida)) {
         return false;
@@ -74,6 +64,7 @@ function validarRespostaPergunta(respostaEscolhida) {
         return true;
     }
 }
+
 
 function validarOpcaoFinal(opcao) {
     if (opcao > 0 && opcao < 3) {
@@ -104,4 +95,4 @@ function adicionarPontuacao(pontuacaoRecebida, usuarioAtual, categoriaAtual) {
     return true;
 }
 
-export { listarPontuacaoGeral, verificarCampoEmBrancoString, verificarCampoEmBrancoInt, adicionarPontuacao, listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta, validarOpcaoFinal }
+export { listarPontuacaoGeral, verificarCampoEmBrancoString, adicionarPontuacao, encontrarCategoria, listarCategoriasPrompt, validarRespostaPergunta, validarOpcaoFinal }

@@ -6,7 +6,7 @@
 import { triagemUsuario } from './controladores/usuarioControlador.js';
 import {
     adicionarPontuacao, listarPontuacaoGeral,
-    listarCategoriasPrompt, validarCategoriaEscolhida, validarRespostaPergunta, validarOpcaoFinal, verificarCampoEmBrancoInt, verificarCampoEmBrancoString
+    listarCategoriasPrompt, encontrarCategoria, validarRespostaPergunta, validarOpcaoFinal, verificarCampoEmBrancoString
 } from './util/util.js';
 
 var usuarioAtual;
@@ -21,36 +21,32 @@ function telaInicial() {
     let nomeUsuario = "";
     let senhaUsuario = "";
 
-    nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n (Pressione 0 para sair)")
+    nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n")
 
-    if (nomeUsuario == "0" || nomeUsuario == null) {
+    if (nomeUsuario == null) { //cancelar ou esc
         alert("Volte Sempre!")
         return;
-    } else {
-        if (!verificarCampoEmBrancoString(nomeUsuario)) {
+    }
 
-            senhaUsuario = prompt("Insira a sua senha: \n (Pressione 0 para sair)")
+    if (verificarCampoEmBrancoString(nomeUsuario)) {
+        telaInicial();
+    }
 
-            if (senhaUsuario == "0" || senhaUsuario == null) {
-                alert("Volte Sempre!")
-                return;
-            } else {
-                if (!verificarCampoEmBrancoString(senhaUsuario)) {
-                    usuarioAtual = triagemUsuario(nomeUsuario, senhaUsuario); //PEGO USUARIO ATUAL
+    do {
+        senhaUsuario = prompt("Insira a sua senha:")
 
-                    if (usuarioAtual) {
-                        telaListaCategorias();
-                    } else {
-                        telaInicial();
-                    }
-                } else {
-                    telaInicial();
-                }
-
-            }
-        } else {
-            telaInicial();
+        if (senhaUsuario == null) {
+            alert("Volte Sempre!")
+            return;
         }
+    } while (verificarCampoEmBrancoString(senhaUsuario))
+
+    usuarioAtual = triagemUsuario(nomeUsuario, senhaUsuario); //PEGO USUARIO ATUAL
+
+    if (usuarioAtual) {
+        telaListaCategorias();
+    } else {
+        telaInicial();
     }
 }
 
@@ -58,35 +54,50 @@ function telaInicial() {
 function telaListaCategorias() {
     let textocategorias = listarCategoriasPrompt(); //Monta o texto mostrado na tela de categorias
 
-    let categoriaEscolhida = parseInt(prompt(textocategorias));
+    let categoriaEscolhida = prompt(textocategorias);
 
-    if (!verificarCampoEmBrancoInt(categoriaEscolhida)) {
-        categoriaAtual = validarCategoriaEscolhida(categoriaEscolhida); //PEGO CATEGORIA ATUAL
-        if (categoriaAtual) {
-            telaListaPerguntas(categoriaAtual)
-        } else {
-            alert("Opção escolhida inválida. Tente novamente!")
-            telaListaCategorias();
-        }
+    if (categoriaEscolhida == null) { //cancelar ou esc
+        alert("Volte Sempre!")
+        return;
+    }
 
-    } else {
+    if (verificarCampoEmBrancoString(categoriaEscolhida)) {
         telaListaCategorias();
     }
 
+    categoriaAtual = encontrarCategoria(parseInt(categoriaEscolhida)); //PEGO CATEGORIA ATUAL
+
+    if (categoriaAtual) {
+        telaListaPerguntas(categoriaAtual)
+    } else {
+        alert("Opção escolhida inválida. Tente novamente!")
+        telaListaCategorias();
+    }
 }
 
-//Check.
+//Check -> OLHAR DEPOIS
 function telaListaPerguntas(categoriaAtual) {
 
     let pontuacaoRecebida = 0;
+
     const perguntasDaCategoria = categoriaAtual.listarPerguntasCategoria()
 
     for (let i = 0; i < 5; i++) {
         const perguntaAtual = perguntasDaCategoria[i];
 
-        const respostaUsuario = parseInt(prompt(`Pergunta ${i + 1}: ${perguntaAtual.getPergunta}\n${perguntaAtual.getAlternativa1}\n${perguntaAtual.getAlternativa2}\n${perguntaAtual.getAlternativa3}\n${perguntaAtual.getAlternativa4}`));
+        const respostaUsuario = prompt(`Pergunta ${i + 1}: ${perguntaAtual.getPergunta}\n${perguntaAtual.getAlternativa1}\n${perguntaAtual.getAlternativa2}\n${perguntaAtual.getAlternativa3}\n${perguntaAtual.getAlternativa4}`);
 
-        if (validarRespostaPergunta(respostaUsuario)) {
+        if (respostaUsuario == null) { //cancelar ou esc
+            alert("Volte Sempre!")
+            return;
+        }
+
+        if (verificarCampoEmBrancoString(respostaUsuario)) {
+            i--;
+            continue;
+        }
+
+        if (validarRespostaPergunta(parseInt(respostaUsuario))) {
             if (respostaUsuario === perguntaAtual.getOpcaoCorreta) {
                 pontuacaoRecebida++;
                 alert("Resposta correta!");
@@ -112,9 +123,9 @@ function telaListaPerguntas(categoriaAtual) {
 //Check.
 function telaListaPontuacaoCategoria() {
 
-    let textoPrompt = categoriaAtual.listarPontuacaoCategoria();
-    if (textoPrompt) {
-        alert(`Ranking em ${categoriaAtual.getNome}: \n ${textoPrompt}`)
+    let textoRanking = categoriaAtual.listarPontuacaoCategoria();
+    if (textoRanking) {
+        alert(`Ranking em ${categoriaAtual.getNome}: \n ${textoRanking}`)
     }
 
     telaPontuacaoGeral();
@@ -122,17 +133,17 @@ function telaListaPontuacaoCategoria() {
 
 //Check.
 function telaPontuacaoGeral() {
-    let textoPrompt = listarPontuacaoGeral();
+    let textoRanking = listarPontuacaoGeral();
 
-    let opcao = parseInt(prompt(`*** RANKING GERAL DO QUIZ SOFTEX *** \n ${textoPrompt} \n 1 - Jogar Novamente \n 2 - Sair`))
+    let opcao = prompt(`*** RANKING GERAL DO QUIZ SOFTEX *** \n ${textoRanking} \n 1 - Jogar Novamente \n 2 - LogOut`)
 
-    if (!verificarCampoEmBrancoInt(opcao) && validarOpcaoFinal(opcao)) {
+    if (!verificarCampoEmBrancoString(opcao) && validarOpcaoFinal(parseInt(opcao))) {
 
         switch (opcao) {
-            case 1:
+            case "1":
                 telaListaCategorias();
                 break;
-            case 2:
+            case "2":
                 telaInicial();
                 break;
         }
