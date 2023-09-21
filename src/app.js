@@ -15,7 +15,6 @@ var categoriaAtual;
 //AQUI O PROGRAMA INICIA
 telaInicial();
 
-
 //Check.
 function telaInicial() {
     let nomeUsuario = "";
@@ -98,7 +97,7 @@ function telaListaPerguntas(categoriaAtual) {
         }
 
         if (validarRespostaPergunta(parseInt(respostaUsuario))) {
-            if (respostaUsuario === perguntaAtual.getOpcaoCorreta) {
+            if (respostaUsuario == perguntaAtual.getOpcaoCorreta) {
                 pontuacaoRecebida++;
                 alert("Resposta correta!");
             } else {
