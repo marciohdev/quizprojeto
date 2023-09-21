@@ -17,36 +17,41 @@ telaInicial();
 
 //Check.
 function telaInicial() {
-    let nomeUsuario = "";
-    let senhaUsuario = "";
+    let nomeUsuario;
+    let senhaUsuario;
 
     nomeUsuario = prompt("*** QUIZ SOFTEX *** \n INSIRA SEU NOME:  \n")
 
-    if (nomeUsuario == null) { //cancelar ou esc
+    console.log(nomeUsuario)
+
+    if (nomeUsuario === null) {
         alert("Volte Sempre!")
-        return;
-    }
-
-    if (verificarCampoEmBrancoString(nomeUsuario)) {
-        telaInicial();
-    }
-
-    do {
-        senhaUsuario = prompt("Insira a sua senha:")
-
-        if (senhaUsuario == null) {
-            alert("Volte Sempre!")
-            return;
-        }
-    } while (verificarCampoEmBrancoString(senhaUsuario))
-
-    usuarioAtual = triagemUsuario(nomeUsuario, senhaUsuario); //PEGO USUARIO ATUAL
-
-    if (usuarioAtual) {
-        telaListaCategorias();
     } else {
-        telaInicial();
+
+        if (verificarCampoEmBrancoString(nomeUsuario)) {
+            telaInicial();
+        }
+
+        do {
+            senhaUsuario = prompt("Insira a sua senha:")
+
+            if (senhaUsuario == null) {
+                alert("Volte Sempre!")
+                return;
+            }
+        } while (verificarCampoEmBrancoString(senhaUsuario))
+
+
+        usuarioAtual = triagemUsuario(nomeUsuario, senhaUsuario); //PEGO USUARIO 
+
+        if (usuarioAtual) {
+            telaListaCategorias();
+        } else {
+            telaInicial();
+        }
+
     }
+
 }
 
 //Check.
