@@ -30,6 +30,7 @@ function telaInicial() {
 
         if (verificarCampoEmBrancoString(nomeUsuario)) {
             telaInicial();
+            return;
         }
 
         do {
@@ -67,6 +68,7 @@ function telaListaCategorias() {
 
     if (verificarCampoEmBrancoString(categoriaEscolhida)) {
         telaListaCategorias();
+        return;
     }
 
     categoriaAtual = encontrarCategoria(parseInt(categoriaEscolhida)); //PEGO CATEGORIA ATUAL
