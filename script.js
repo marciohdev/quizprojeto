@@ -27,7 +27,7 @@ function passarParaProximaPergunta(r) {
         respostasCorretas++;
     }
 
-    if(index < perguntas.length - 1) {
+    if (index < perguntas.length - 1) {
         index++;
         carregarPergunta();
     } else {
@@ -43,7 +43,7 @@ function iniciarQuiz() {
     }
 
     addPergunta()
-    
+
 }
 
 function addPergunta() {
@@ -53,7 +53,7 @@ function addPergunta() {
         inputPergunta.style.display = "flex"
     }
 
-    
+
 }
 
 function carregarPergunta() {
